@@ -32,7 +32,7 @@ extension TableDataSource: UITableViewDataSource, UITableViewDelegate {
         // Configure content.
 //        content.image = UIImage(systemName: "star")
         content.text = model.title
-        content.secondaryText = "\(model.signal) \(model.signal2) \(model.signalmath)"
+        content.secondaryText = "\(model.RSSI) \(model.power) \(model.signalmath)"
         // Customize appearance.
         content.prefersSideBySideTextAndSecondaryText = true
         content.imageProperties.tintColor = .purple

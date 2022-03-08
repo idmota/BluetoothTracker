@@ -16,6 +16,7 @@
 		44896D5627D5FB400054D0BB /* BluetoothServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44896D5527D5FB400054D0BB /* BluetoothServices.swift */; };
 		44896D5927D5FB730054D0BB /* BluetoothProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44896D5827D5FB730054D0BB /* BluetoothProtocol.swift */; };
 		44896D5C27D610110054D0BB /* TableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44896D5B27D610100054D0BB /* TableDataSource.swift */; };
+		44896D5E27D68F470054D0BB /* distanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44896D5D27D68F470054D0BB /* distanceView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		44896D5527D5FB400054D0BB /* BluetoothServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothServices.swift; sourceTree = "<group>"; };
 		44896D5827D5FB730054D0BB /* BluetoothProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothProtocol.swift; sourceTree = "<group>"; };
 		44896D5B27D610100054D0BB /* TableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDataSource.swift; sourceTree = "<group>"; };
+		44896D5D27D68F470054D0BB /* distanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = distanceView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				44896D5B27D610100054D0BB /* TableDataSource.swift */,
+				44896D5D27D68F470054D0BB /* distanceView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -175,6 +178,7 @@
 				44896D5927D5FB730054D0BB /* BluetoothProtocol.swift in Sources */,
 				44896D5627D5FB400054D0BB /* BluetoothServices.swift in Sources */,
 				44896D4527D5F9F40054D0BB /* ViewController.swift in Sources */,
+				44896D5E27D68F470054D0BB /* distanceView.swift in Sources */,
 				44896D4127D5F9F40054D0BB /* AppDelegate.swift in Sources */,
 				44896D4327D5F9F40054D0BB /* SceneDelegate.swift in Sources */,
 			);
@@ -328,6 +332,7 @@
 				DEVELOPMENT_TEAM = 85U2D4R6N2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BluetoothTracker/Info.plist;
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Privacy - Bluetooth Always Usage Description";
 				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Privacy - Bluetooth Peripheral Usage Description";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -358,6 +363,7 @@
 				DEVELOPMENT_TEAM = 85U2D4R6N2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BluetoothTracker/Info.plist;
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Privacy - Bluetooth Always Usage Description";
 				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Privacy - Bluetooth Peripheral Usage Description";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

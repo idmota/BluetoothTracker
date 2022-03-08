@@ -8,11 +8,12 @@
 import CoreBluetooth
 
 struct BluetoothModel: Equatable {
-    var title: String
-    var signal: Int
-    var signal2: String
-    var signalmath: String
     var identifier: UUID
+    var title: String
+    var distance: Double = 0
+    var RSSI: Int
+    var power: String
+    var signalmath: String
     var state: Int
     
     static func == (lhs: Self, rhs: Self) -> Bool {
@@ -21,15 +22,18 @@ struct BluetoothModel: Equatable {
     
     mutating func update(model: Self) {
         self.state = model.state
-        self.signal = model.signal
-        self.signal2 = model.signal2
+        self.RSSI = model.RSSI
+        self.power = model.power
         self.signalmath = model.signalmath
+    }
+    
+    mutating func setDistance(_ distance: Double) {
+        self.distance = distance
     }
 }
 
 class BluetoothServices: NSObject, BluetoothProtocol {
     var centralManager: CBCentralManager!
-    var heartRatePeripheral: CBPeripheral!
     var delegate: BluetoothServicesOutput?
 }
 
@@ -58,34 +62,34 @@ extension BluetoothServices: CBCentralManagerDelegate {
             print("central.state is .poweredOff")
           case .poweredOn:
             print("central.state is .poweredOn")
-            centralManager.scanForPeripherals(withServices: [])
         @unknown default:
             fatalError()
         }
     }
     
-    func scan() {
-//        let heartRateServiceCBUUID = CBUUID(string: "0x180D")
-//        centralManager.scanForPeripherals(withServices: [heartRateServiceCBUUID])
-
+    func start() {
         centralManager.scanForPeripherals(withServices: [])
+    }
+    
+    func stop() {
+        centralManager.stopScan()
     }
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral,
                         advertisementData: [String: Any], rssi RSSI: NSNumber) {
-       
-        if let power = advertisementData[CBAdvertisementDataTxPowerLevelKey] as? Double{
-            print("Distance is ", pow(10, ((power - Double(truncating: RSSI))/20)))
-            
-            let model = BluetoothModel(title: peripheral.name ?? "",
-                                       signal: Int(truncating: RSSI),
-                                       signal2: String(power),
-                                       signalmath: String(pow(10, ((power - Double(truncating: RSSI))/20))),
-                                       identifier: peripheral.identifier,
-                                       state: peripheral.state.rawValue)
-            print(peripheral)
-            delegate?.getDevices(model: model)
-            
+        DispatchQueue.global().async { [weak self] in
+            if let power = advertisementData[CBAdvertisementDataTxPowerLevelKey] as? Double, peripheral.name != nil {
+                print("Distance is ", pow(10, ((power - Double(truncating: RSSI))/20)))
+                
+                let model = BluetoothModel(identifier: peripheral.identifier, title: peripheral.name ?? "",
+                                           RSSI: Int(truncating: RSSI),
+                                           power: String(power),
+                                           signalmath: String(pow(10, ((power - Double(truncating: RSSI))/20))),
+                                           state: peripheral.state.rawValue)
+                DispatchQueue.main.async {
+                    self?.delegate?.getDevices(model: model)
+                }
+            }
         }
     }
 }
