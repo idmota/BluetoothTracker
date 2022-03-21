@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import CoreMotion
 
 class ViewController: UIViewController {
     
+    var motion = CMMotionManager()
     lazy var tableView = UITableView()
     lazy var delegateDataSource = TableDataSource()
     lazy var bluetoothServices = BluetoothServices()
@@ -18,9 +20,24 @@ class ViewController: UIViewController {
     var distance: Double = 0
     var step: Double = 0.5
     var isStart: Bool = false
+    let generator = UIImpactFeedbackGenerator(style: .light)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        motion.startGyroUpdates()
+        motion.startAccelerometerUpdates()
+        
+        motion.accelerometerUpdateInterval = 3
+        
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+            if let data = self.motion.accelerometerData {
+                print(data.acceleration)
+            }
+            
+            if let guroData = self.motion.gyroData {
+                print(guroData.rotationRate)
+            }
+        }
         bluetoothServices.initCentralManager()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.delegate = delegateDataSource
@@ -70,6 +87,7 @@ class ViewController: UIViewController {
         if distance - step >= 0 {
             distance = distance - step
             updateDistanceLabel()
+            generator.impactOccurred()
         }
     }
     
@@ -78,6 +96,7 @@ class ViewController: UIViewController {
         if distance + step > 0 {
             distance = distance + step
             updateDistanceLabel()
+            generator.impactOccurred()
         }
     }
     
@@ -90,15 +109,18 @@ class ViewController: UIViewController {
         }
         isStart = !isStart
         updateDistanceLabel()
+        generator.impactOccurred()
     }
     
     @objc
     func saveActions() {
+        UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
         createCSV(from: modelsForSave) {[weak self] in
             let alertVC = UIAlertController(title: "CVS is saved", message: nil, preferredStyle: .alert)
             self?.present(alertVC, animated: true) {
                 self?.dismiss(animated: true)
             }
+            
         }
     }
     
@@ -140,31 +162,23 @@ extension ViewController {
             return String(describing: title)
         })
         csvString.append(arrayKey.joined(separator: ","))
-        csvString.append("\n\n")
+        csvString.append("\n")
         models.forEach { model in
             let arrayValue = Mirror(reflecting: model).children.compactMap({ sValue -> String? in
-                //                guard let value = sValue.value else { return nil }
                 return String(describing: sValue.value)
             })
             csvString.append(arrayValue.joined(separator: ","))
             csvString.append("\n")
         }
-        //        let data = (memory.property(forKey: .dataWrittenToMemoryStreamKey) as? Date)
-        //           let fileManager = FileManager.default
-        //        let memory = OutputStream.toMemory()
-        //        memory.
         do {
             let documentDirectoryPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!  as String
             let sFileName = "sfile.csv"
             let documentURL = URL(fileURLWithPath: documentDirectoryPath).appendingPathComponent(sFileName)
             
-            //               let path = try fileManager.url(for: .documentDirectory, in: .allDomainsMask, appropriateFor: nil, create: false)
-            //               let fileURL = path.appendingPathComponent("CSVRec.csv")
             try csvString.write(to: documentURL, atomically: true, encoding: .utf8)
         } catch {
             print("error creating file")
         }
-        //
         completion()
     }
     

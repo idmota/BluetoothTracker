@@ -25,21 +25,16 @@ extension TableDataSource: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell") else { return UITableViewCell() }
         let model = models[indexPath.row]
         
         var content = cell.defaultContentConfiguration()
-        // Configure content.
-//        content.image = UIImage(systemName: "star")
         content.text = model.title
         content.secondaryText = "\(model.RSSI) \(model.power) \(model.signalmath)"
-        // Customize appearance.
         content.prefersSideBySideTextAndSecondaryText = true
         content.imageProperties.tintColor = .purple
 
         cell.contentConfiguration = content
         return cell
     }
-    
-    
 }

@@ -16,11 +16,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
-        let viewController = ViewController()
-        let navigation = UINavigationController(rootViewController: viewController)
-        window.rootViewController = navigation
+        window.rootViewController = getTabBar()
         self.window = window
         window.makeKeyAndVisible()
+    }
+    
+    func getTabBar() -> UITabBarController {
+        let tabBar = UITabBarController()
+        tabBar.tabBar.backgroundColor = .white
+        let viewController = ViewController()
+        let navigation = UINavigationController(rootViewController: viewController)
+        let tabOneBarItem = UITabBarItem(title: "Tab 1", image: nil, selectedImage: nil)
+        navigation.tabBarItem.imageInsets = UIEdgeInsets.init(top: 30,left: 0,bottom: -30,right: 0)
+        navigation.tabBarItem = tabOneBarItem
+        tabBar.setViewControllers([navigation], animated: false)
+        return tabBar
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
