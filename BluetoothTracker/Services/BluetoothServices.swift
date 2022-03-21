@@ -11,9 +11,9 @@ struct BluetoothModel: Equatable {
     var identifier: UUID
     var title: String
     var distance: Double = 0
-    var RSSI: Int
-    var power: String
-    var signalmath: String
+    var RSSI: Double
+    var power: Double
+    var signalmath: Double
     var state: Int
     
     static func == (lhs: Self, rhs: Self) -> Bool {
@@ -82,9 +82,9 @@ extension BluetoothServices: CBCentralManagerDelegate {
                 print("Distance is ", pow(10, ((power - Double(truncating: RSSI))/20)))
                 
                 let model = BluetoothModel(identifier: peripheral.identifier, title: peripheral.name ?? "",
-                                           RSSI: Int(truncating: RSSI),
-                                           power: String(power),
-                                           signalmath: String(pow(10, ((power - Double(truncating: RSSI))/20))),
+                                           RSSI: Double(truncating: RSSI),
+                                           power: power,
+                                           signalmath: Double(pow(10, ((power - Double(truncating: RSSI))/20))),
                                            state: peripheral.state.rawValue)
                 DispatchQueue.main.async {
                     self?.delegate?.getDevices(model: model)

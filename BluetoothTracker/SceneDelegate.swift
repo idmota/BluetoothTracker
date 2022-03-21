@@ -23,11 +23,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func getTabBar() -> UITabBarController {
         let tabBar = UITabBarController()
-        tabBar.tabBar.backgroundColor = .white
+        
         let viewController = ViewController()
         let navigation = UINavigationController(rootViewController: viewController)
-        let tabOneBarItem = UITabBarItem(title: "Tab 1", image: nil, selectedImage: nil)
-        navigation.tabBarItem.imageInsets = UIEdgeInsets.init(top: 30,left: 0,bottom: -30,right: 0)
+        let tabOneBarItem = UITabBarItem(title: "All devices", image: nil, selectedImage: nil)
+        navigation.tabBarItem.imageInsets = UIEdgeInsets.init(top: 0,left: 0,bottom: -30,right: 0)
         navigation.tabBarItem = tabOneBarItem
         tabBar.setViewControllers([navigation], animated: false)
         return tabBar
