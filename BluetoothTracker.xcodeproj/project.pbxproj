@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B4367D6282DB82C00E6D109 /* CompassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4367D5282DB82C00E6D109 /* CompassView.swift */; };
+		3B4367D9282DBB4700E6D109 /* Label+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4367D8282DBB4700E6D109 /* Label+Extension.swift */; };
+		3B4367DB282DC7B100E6D109 /* CompassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4367DA282DC7B100E6D109 /* CompassViewController.swift */; };
+		3B4367DD282E5A6100E6D109 /* CompassHeading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4367DC282E5A6100E6D109 /* CompassHeading.swift */; };
+		3B4367E1282E5BC400E6D109 /* CompassHeadingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4367E0282E5BC400E6D109 /* CompassHeadingProtocol.swift */; };
+		3B4367E5282E5D8D00E6D109 /* LocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4367E4282E5D8D00E6D109 /* LocationProvider.swift */; };
+		3B4367E8282FC39400E6D109 /* MotionServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4367E7282FC39400E6D109 /* MotionServices.swift */; };
+		3B4367EA282FC71900E6D109 /* MotionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4367E9282FC71900E6D109 /* MotionProtocol.swift */; };
 		44896D4127D5F9F40054D0BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44896D4027D5F9F40054D0BB /* AppDelegate.swift */; };
 		44896D4327D5F9F40054D0BB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44896D4227D5F9F40054D0BB /* SceneDelegate.swift */; };
 		44896D4527D5F9F40054D0BB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44896D4427D5F9F40054D0BB /* ViewController.swift */; };
@@ -19,6 +27,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B4367D5282DB82C00E6D109 /* CompassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassView.swift; sourceTree = "<group>"; };
+		3B4367D8282DBB4700E6D109 /* Label+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Label+Extension.swift"; sourceTree = "<group>"; };
+		3B4367DA282DC7B100E6D109 /* CompassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassViewController.swift; sourceTree = "<group>"; };
+		3B4367DC282E5A6100E6D109 /* CompassHeading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassHeading.swift; sourceTree = "<group>"; };
+		3B4367E0282E5BC400E6D109 /* CompassHeadingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassHeadingProtocol.swift; sourceTree = "<group>"; };
+		3B4367E4282E5D8D00E6D109 /* LocationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProvider.swift; sourceTree = "<group>"; };
+		3B4367E7282FC39400E6D109 /* MotionServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionServices.swift; sourceTree = "<group>"; };
+		3B4367E9282FC71900E6D109 /* MotionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionProtocol.swift; sourceTree = "<group>"; };
 		44896D3D27D5F9F40054D0BB /* BluetoothTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BluetoothTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44896D4027D5F9F40054D0BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		44896D4227D5F9F40054D0BB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +59,60 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B4367D7282DBB2B00E6D109 /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				3B4367D8282DBB4700E6D109 /* Label+Extension.swift */,
+			);
+			path = extension;
+			sourceTree = "<group>";
+		};
+		3B4367DE282E5B0800E6D109 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				3B4367E0282E5BC400E6D109 /* CompassHeadingProtocol.swift */,
+				3B4367DC282E5A6100E6D109 /* CompassHeading.swift */,
+				3B4367E4282E5D8D00E6D109 /* LocationProvider.swift */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
+		3B4367DF282E5B1500E6D109 /* Bluetooth */ = {
+			isa = PBXGroup;
+			children = (
+				44896D5527D5FB400054D0BB /* BluetoothServices.swift */,
+				44896D5827D5FB730054D0BB /* BluetoothProtocol.swift */,
+			);
+			path = Bluetooth;
+			sourceTree = "<group>";
+		};
+		3B4367E2282E5BEE00E6D109 /* Bluetooth */ = {
+			isa = PBXGroup;
+			children = (
+				44896D4427D5F9F40054D0BB /* ViewController.swift */,
+				44896D5B27D610100054D0BB /* TableDataSource.swift */,
+			);
+			path = Bluetooth;
+			sourceTree = "<group>";
+		};
+		3B4367E3282E5CCB00E6D109 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				3B4367D5282DB82C00E6D109 /* CompassView.swift */,
+				3B4367DA282DC7B100E6D109 /* CompassViewController.swift */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
+		3B4367E6282FC36300E6D109 /* Motion */ = {
+			isa = PBXGroup;
+			children = (
+				3B4367E7282FC39400E6D109 /* MotionServices.swift */,
+				3B4367E9282FC71900E6D109 /* MotionProtocol.swift */,
+			);
+			path = Motion;
+			sourceTree = "<group>";
+		};
 		44896D3427D5F9F40054D0BB = {
 			isa = PBXGroup;
 			children = (
@@ -66,8 +136,8 @@
 				44896D5427D5FAAE0054D0BB /* Services */,
 				44896D4027D5F9F40054D0BB /* AppDelegate.swift */,
 				44896D5A27D60FD10054D0BB /* Screens */,
-				44896D4427D5F9F40054D0BB /* ViewController.swift */,
 				44896D4227D5F9F40054D0BB /* SceneDelegate.swift */,
+				3B4367D7282DBB2B00E6D109 /* extension */,
 				44896D4627D5F9F40054D0BB /* Main.storyboard */,
 				44896D4927D5F9F60054D0BB /* Assets.xcassets */,
 				44896D4B27D5F9F60054D0BB /* LaunchScreen.storyboard */,
@@ -79,8 +149,9 @@
 		44896D5427D5FAAE0054D0BB /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				44896D5527D5FB400054D0BB /* BluetoothServices.swift */,
-				44896D5827D5FB730054D0BB /* BluetoothProtocol.swift */,
+				3B4367E6282FC36300E6D109 /* Motion */,
+				3B4367DF282E5B1500E6D109 /* Bluetooth */,
+				3B4367DE282E5B0800E6D109 /* Location */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -95,7 +166,8 @@
 		44896D5A27D60FD10054D0BB /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				44896D5B27D610100054D0BB /* TableDataSource.swift */,
+				3B4367E3282E5CCB00E6D109 /* Location */,
+				3B4367E2282E5BEE00E6D109 /* Bluetooth */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -171,10 +243,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B4367DB282DC7B100E6D109 /* CompassViewController.swift in Sources */,
+				3B4367E1282E5BC400E6D109 /* CompassHeadingProtocol.swift in Sources */,
+				3B4367D9282DBB4700E6D109 /* Label+Extension.swift in Sources */,
+				3B4367EA282FC71900E6D109 /* MotionProtocol.swift in Sources */,
 				44896D5C27D610110054D0BB /* TableDataSource.swift in Sources */,
 				44896D5927D5FB730054D0BB /* BluetoothProtocol.swift in Sources */,
+				3B4367D6282DB82C00E6D109 /* CompassView.swift in Sources */,
+				3B4367DD282E5A6100E6D109 /* CompassHeading.swift in Sources */,
 				44896D5627D5FB400054D0BB /* BluetoothServices.swift in Sources */,
 				44896D4527D5F9F40054D0BB /* ViewController.swift in Sources */,
+				3B4367E8282FC39400E6D109 /* MotionServices.swift in Sources */,
+				3B4367E5282E5D8D00E6D109 /* LocationProvider.swift in Sources */,
 				44896D4127D5F9F40054D0BB /* AppDelegate.swift in Sources */,
 				44896D4327D5F9F40054D0BB /* SceneDelegate.swift in Sources */,
 			);

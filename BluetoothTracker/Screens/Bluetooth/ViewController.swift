@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  FiendViewController.swift
 //  BluetoothTracker
 //
 //  Created by Ruslan Maksiutov on 07.03.2022.
@@ -8,7 +8,7 @@
 import UIKit
 import CoreMotion
 
-class ViewController: UIViewController {
+class FiendViewController: UIViewController {
     
     var motion = CMMotionManager()
     lazy var tableView = UITableView()
@@ -135,7 +135,8 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: BluetoothServicesOutput {
+// MARK: - BluetoothServicesOutput
+extension FiendViewController: BluetoothServicesOutput {
     
     func getDevices(model: BluetoothModel) {
         var tModel = model
@@ -152,7 +153,7 @@ extension ViewController: BluetoothServicesOutput {
 }
 
 // MARK: - CVS
-extension ViewController {
+extension FiendViewController {
     func createCSV(from models:[BluetoothModel], _ completion: () -> Void) {
         guard let model = models.first else { return }
         var csvString = ""
